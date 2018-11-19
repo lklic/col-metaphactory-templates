@@ -1,0 +1,91 @@
+<ol class="page-breadcrumb">
+  <li>
+    <mp-link title="Home" url="/">Home</mp-link>
+  </li>
+  <li class="active">Assets</li>
+</ol>
+
+
+<div class="page">
+  <div class="page__header">
+    <div class='page__header-thumbnail'>
+      <h2><i class="fa fa-cog fa-2x"></i></h2>
+    </div>
+    <div class='page__header-body'>
+      <h2>Assets</h2>
+    </div>
+  </div>
+  <div class='page__body'>    
+       <div class="text-center panel panel-default" style="margin-top: 20px; margin-left:20px;float:left;font-size:12px;width:200px;">
+          <div class="panel-body"><span class="fa fa-sitemap fa-5x">&nbsp;</span></div>
+          <div class="panel-footer" style="position: relative">
+              <semantic-link title="Ontologies" uri="http://www.metaphacts.com/resource/assets/Ontologies">
+                    Ontologies
+              </semantic-link>
+          </div>
+      </div>
+      
+      [[#if (hasPermission "api:ldp:container:<http://www.metaphacts.com/ontologies/platform#ontodiaDiagramContainer>:read:any")]]
+        <div class="text-center panel panel-default" style="margin-top: 20px; margin-left:20px;float:left;font-size:12px;width:200px;">
+            <div class="panel-body"><span class="fa fa-object-group fa-5x">&nbsp;</span></div>
+            <div class="panel-footer" style="position: relative">
+                <semantic-link title="Diagrams" uri="http://www.metaphacts.com/resource/assets/OntodiaDiagrams">
+                      Diagrams
+                </semantic-link>
+            </div>
+        </div>
+      [[/if]]
+    
+      <style>
+        .fa-stack-1x { top: .25em; }
+        .fa-stack {
+          font-size: 2.5em;
+          vertical-align: -16%;
+        }
+        .filetype-text {
+          font-size: .4em;
+          font-weight: 800;
+        }
+      </style>
+
+      [[#if (hasPermission "api:ldp:container:<http://www.metaphacts.com/ontologies/platform#queryTemplateContainer>:read:any")]]
+        <div class="text-center panel panel-default" style="margin-top: 20px; margin-left:20px;float:left;font-size:12px;width:200px;">
+            <div class="panel-body">      
+              <span class="fa-stack">
+                <span class="fa-stack-1x filetype-text">SPIN</span>
+                <i class="fa fa-file-o fa-stack-2x"></i>
+              </span>
+            </div>
+            <div class="panel-footer" style="position: relative">
+                <semantic-link title="Query Templates" uri="http://www.metaphacts.com/resource/assets/QueryTemplates">
+                      Query Templates
+                </semantic-link>
+            </div>
+        </div>
+      [[/if]]
+    
+      [[#if (hasPermission "api:ldp:container:<http://www.metaphacts.com/ontologies/platform#fieldDefinitionContainer>:read:any")]]
+        <div class="text-center panel panel-default" style="margin-top: 20px; margin-left:20px;float:left;font-size:12px;width:200px;">
+            <div class="panel-body"><span class="fa fa-list-ul fa-5x">&nbsp;</span></div>
+            <div class="panel-footer" style="position: relative">
+                <semantic-link title="Fields" uri="http://www.metaphacts.com/resource/assets/Fields">
+                      Fields
+                </semantic-link>
+            </div>
+        </div>
+      [[/if]]
+    
+      [[#if (hasPermission "api:ldp:*")]]
+        <div class="text-center panel panel-default" style="margin-top: 20px; margin-left:20px;float:left;font-size:12px;width:200px;">
+            <div class="panel-body"><span class="fa fa-archive fa-5x">&nbsp;</span></div>
+            <div class="panel-footer" style="position: relative">
+                <semantic-context repository='assets'>
+                  <semantic-link title="LDP" uri="http://www.metaphacts.com/ontologies/platform#rootContainer" >
+                      LDP
+                  </semantic-link>
+                </semantic-context>
+            </div>
+        </div>
+      [[/if]]
+  </div>
+</div>

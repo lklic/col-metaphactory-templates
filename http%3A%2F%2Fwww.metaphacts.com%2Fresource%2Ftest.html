@@ -1,0 +1,10 @@
+<semantic-map
+  query='
+    SELECT ?wkt ?description ?link WHERE {
+      VALUES(?wkt ?description ?link) {
+        ("POLYGON((11.271629333496094 43.77053600288818,11.280727386474608 43.77028808349897,11.282100677490234 43.771651627422244,11.26819610595703 43.785657142296856,11.263389587402344 43.783798191990826,11.272315979003906 43.77437862200773,11.271629333496094 43.77053600288818))" "Metaphacts GmbH"  <http://www.wikidata.org/entity/Q22132500>)
+      }
+    }
+  '
+  tuple-template='<b>{{description.value}}</b><br><a href="https://wikidata.metaphacts.com/resource/?uri={{link.value}}" target="_blank">Open in wikidata</a>'
+></semantic-map>

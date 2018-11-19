@@ -1,0 +1,74 @@
+<style>
+  .semantic-carousel{
+    overflow: visible;
+    position: relative;
+    width: 220px;
+  }
+	/* to hide the back- and forth carousel buttons if there are no further images */
+  .slick-dots{ display: none !important;}
+  .slick-arrow{ display: none !important;}
+
+</style>
+<bs-row>
+  <bs-col sm=8 sm-offset=2 >
+    <ol class="breadcrumb" style="background:white;border:none;padding-left:0px;">
+      <li>
+        <a title="Portal" href="/">Home</a>
+      </li>
+      <li>
+        <semantic-link title="Person" uri="http://www.cidoc-crm.org/cidoc-crm/E21_Person">
+          Person 
+        </semantic-link>
+      </li>
+      <li class="active">[[this.label]]</li>
+    </ol>
+    <!-- header row -->
+    <bs-row>
+      <bs-col sm=4>
+        <div >
+
+<semantic-carousel
+    query="
+
+           SELECT DISTINCT ?thumbnail WHERE 
+
+           {?? owl:sameas ?wikiData
+SERVICE <https://query.wikidata.org/sparql>
+{?wikiData <http://www.wikidata.org/prop/direct/P18> ?thumbnail}} 
+           
+           
+           LIMIT 1
+"
+    tuple-template='<img src="{{thumbnail.value}}" style="max-height:260px; margin: 0 auto;" class="img-rounded">'
+></semantic-carousel>
+          <p align="center"><i> image from WikiData</i>
+          </p>
+          
+        </div>
+      </bs-col>
+      <bs-col sm=8>
+        <h2> <semantic-query
+    query='
+              SELECT ?name WHERE {  ?? <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> ?name                  
+                
+                }'
+></semantic-query> </h2>
+        <b>URI</b>: <i style="font-size: 12px;">[[this]]</i>
+      </bs-col>
+    </bs-row>
+    
+    <div style="height:50px;"><!-- padding--></div>
+
+    
+<semantic-table
+    query='SELECT ?value ?label WHERE {
+   ?? a <http://www.cidoc-crm.org/cidoc-crm/E21_Person> .
+  ?? <http://www.cidoc-crm.org/cidoc-crm/P48_has_preferred_identifier> $value
+}'
+                       
+    column-configuration='[
+              {"variableName": "value", "displayName": "Artist_ID"}
+            ]'
+>
+
+</semantic-table>

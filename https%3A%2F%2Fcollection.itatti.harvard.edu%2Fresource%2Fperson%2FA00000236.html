@@ -1,0 +1,55 @@
+<semantic-carousel
+    query="
+
+           SELECT DISTINCT ?thumbnail WHERE 
+{?? owl:sameas ?wikiData
+SERVICE <https://query.wikidata.org/sparql>
+{?wikiData <http://www.wikidata.org/prop/direct/P18> ?thumbnail}} LIMIT 1
+
+           
+           
+           "
+    tuple-template='<img src="{{thumbnail.value}}" style="max-height:260px; margin: 0 auto;" class="img-rounded">'
+></semantic-carousel>
+
+<div style="float:left;">
+          <semantic-carousel query='SELECT DISTINCT ?image WHERE 
+{?? ?localProperty <http://www.wikidata.org/entity/Q1115113>
+SERVICE <https://query.wikidata.org/sparql>
+{<http://www.wikidata.org/entity/Q1115113> <http://www.wikidata.org/prop/direct/P18> ?image}} LIMIT 1'
+            layout='{
+              "tupleTemplate":"<mp-overlay-dialog title=\"Image Detail\" bs-size=\"large\" type=\"modal\">
+                    							<mp-overlay-dialog-trigger><img src=\"{{image.value}}\" style=\"max-width: 200px; max-height: 200px;cursor:pointer;display:block;margin:0 auto;\"></mp-overlay-dialog-trigger>
+                    							<mp-overlay-dialog-content><div class=\"text-center\" ><img src=\"{{image.value}}\"></div></mp-overlay-dialog-content>
+                    					</mp-overlay-dialog>",
+              "options":{"infinite":false, "variableWidth": false}
+            }'>
+          </semantic-carousel> 
+
+        </div>
+
+<semantic-query
+    query='
+
+SELECT DISTINCT ?image WHERE 
+{?? ?localProperty <http://www.wikidata.org/entity/Q1115113>
+SERVICE <https://query.wikidata.org/sparql>
+{<http://www.wikidata.org/entity/Q1115113> <http://www.wikidata.org/prop/direct/P18> ?image}} LIMIT 1
+
+'
+></semantic-query>
+
+<semantic-carousel
+    query="
+
+           SELECT DISTINCT ?thumbnail WHERE 
+{?? owl:sameas ?wikiData
+SERVICE <https://query.wikidata.org/sparql>
+{?wikiData <http://www.wikidata.org/prop/direct/P18> ?thumbnail}} LIMIT 1
+
+           
+           
+           "
+    tuple-template='<img src="{{thumbnail.value}}" style="max-height:260px; margin: 0 auto;" class="img-rounded">'
+></semantic-carousel>
+

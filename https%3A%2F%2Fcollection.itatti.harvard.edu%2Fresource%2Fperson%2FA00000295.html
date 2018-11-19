@@ -1,0 +1,31 @@
+<mp-field-visualization 
+                subject='[[this]]'
+                fields='[[fieldDefinitions]]'
+              ></mp-field-visualization>
+
+{{#each fields as |field|}}
+      {{#if field.values}}
+        <tr class="rs-page__field">
+          <td><span class="rs-page__field-label">
+            <semantic-link 
+              uri="http://www.researchspace.org/resource/Field"
+              urlqueryparam-field="{{field.id}}"
+              urlqueryparam-subject="{{../subject}}"
+            >{{field.label}}</semantic-link>
+          </span></td>
+          <td>
+            <ol class="rs-page__field-values">
+              {{#each field.values as |value|}}
+                <li class="rs-page__field-value">
+                  <div data-flex-layout='row center-start'>
+                    <div>
+                      {{> rsp:FieldValueVisualization field=field value=value guess=../../guess }}
+                    </div>
+                  </div>
+                </li>
+              {{/each}}
+            </ol>
+          </td>
+        </tr>
+      {{/if}}
+    {{/each}}
